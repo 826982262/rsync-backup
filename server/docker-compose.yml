@@ -1,0 +1,16 @@
+version: "3.7"
+services:
+  rsync_server:
+    image: eeacms/rsync
+    container_name: rsync_server
+    restart: always
+    volumes:
+      - ./data:/data
+      - /docker/cloud-demo/api/attachments:/data/attachments
+      - /docker/cloud-demo/api/icon:/data/icon
+      - /docker/cloud-demo/web/html/house:/data/house
+    ports:
+     - "2222:22"
+    command: server
+    environment:
+      SSH_AUTH_KEY_1: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDd6UEvZD1WqUlfX4yhjgV0dMkrMGLXZ/JMq+BAeY8/r1EQiiCECuE3zKQFFl4toxkjaXiU+Y5lq5kdSz/YACwHmgHh21Kte2N43+TLx3XQcTvbyKUW0eLNE5kF64ZmpOkmy5RYLWa8ttl/S9ltvVbKHbAzT9sA286jEqkbmX4i2amYSDqEbJdNcbM4+9gPRsFEI9TBzy4TG8PXTOhtS7JLmefq51/yf1L8RMmPpTZe/CRkyMr4x0hbIr+ffjAKvrJtpfAKZ0gRBgLJjm8j6wQanZDeUJw6dmAAS0vMgegykgjAO+RFxn0JLwUgTUuRVeEVX1zqxxTC8oBxKF6I4g47gUUC6j6IZSv00HXQtZAT+fxozwCoKNCFvhzXqMXpEl9HBolwGnKk1IpuDmMmT23+J13A6EV6WDdlA5ic1eGr/wTYMbNTZLaOqes5AaGxh2jq6pxCvh646YnS8iS36IjeHveUeSVeiX+hneVN4xQr3vQ9IC0Mi4saK2u7N5QXpV0= root@a1b81ed9bf9b

@@ -1,0 +1,13 @@
+version: "3.7"
+services:
+  rsync_client:
+    image: eeacms/rsync
+    container_name: rsync_client
+    restart: always
+
+    volumes:
+      - ./backupdata:/data
+      - ./ssh:/root/.ssh
+    command: client
+    environment:
+      CRON_TASK_1: "0 0 3 * * rsync -e 'ssh -p 2222' -aqx --numeric-ids root@static.smallsaas.cn:/data/ /data/"
